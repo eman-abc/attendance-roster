@@ -68,8 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["email"] = $email_from_db;
                             $_SESSION["role"] = $role;
 
-                            // Redirect to dashboard or home page
-                            header("location: login.php");
+                            // Redirect based on role
+                            if ($role == 'student') {
+                                header("location: ../student/index.php");
+                            } elseif ($role == 'teacher') {
+                                header("location: ../teacher/index.php");
+                            } elseif ($role == 'admin') {
+                                header("location: ../admin/index.php");
+                            }
                             exit();
                         } else {
                             $password_err = "The password you entered was not correct.";
@@ -99,33 +105,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="master.css">
 </head>
 
 <body>
-    <div>
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="<?php echo $email; ?>">
-                <span><?php echo $email_err; ?></span>
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Login</h2>
+                <p class="text-muted">Please fill in your credentials to login.</p>
             </div>
 
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-                <span><?php echo $password_err; ?></span>
-            </div>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <!-- Email Field -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                    <div class="invalid-feedback">
+                        <?php echo $email_err; ?>
+                    </div>
+                </div>
 
-            <div>
-                <input type="submit" value="Login">
-            </div>
-        </form>
+                <!-- Password Field -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <div class="invalid-feedback">
+                        <?php echo $password_err; ?>
+                    </div>
+                </div>
 
-        <p>Don't have an account? <a href="register.php">Register here</a>.</p>
+                <!-- Login Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+
+            <p class="form-text mt-3">Don't have an account? <a href="register.php">Register here</a>.</p>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
