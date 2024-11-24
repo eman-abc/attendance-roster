@@ -110,8 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </head>
 
-<body style="max-height: 100vh;">
-    <div class="container">
+<body>
+    <div class="container ms-auto">
         <div class="login-container">
             <div class="login-header">
                 <h2>Login</h2>
