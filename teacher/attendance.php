@@ -6,6 +6,11 @@ session_start();
 require_once('C:\xampp\htdocs\attendance-roster\config.php'); // Adjust the path as per your file structure
 
 // Initialize variables
+$class_name = "";
+$attendance_data = []; // To hold the fetched attendance data
+$attendance_err = "";
+
+// Check if the class ID is provided
 if (isset($_GET['class_id'])) {
     $class_id = $_GET['class_id'];
 } else {
@@ -13,9 +18,20 @@ if (isset($_GET['class_id'])) {
     exit();
 }
 
-// Initialize error variables
-$attendance_data = []; // To hold the fetched attendance data
-$attendance_err = "";
+// Fetch the class name based on the class ID
+$sql_class_name = "SELECT name FROM classes WHERE id = ?";
+if ($stmt = $conn->prepare($sql_class_name)) {
+    $stmt->bind_param("i", $class_id);
+
+    if ($stmt->execute()) {
+        $stmt->bind_result($class_name);
+        $stmt->fetch();
+    }
+    $stmt->close();
+} else {
+    echo "Error fetching class name.";
+    exit();
+}
 
 // Prepare the SQL query to fetch attendance data for the class grouped by date
 $sql = "SELECT a.date, a.student_id, a.status, a.comment
@@ -52,6 +68,7 @@ if ($stmt = $conn->prepare($sql)) {
 $conn->close();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,37 +77,36 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance for Class</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/attendance.css?v=1.0">
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2>Attendance for Class ID: <?php echo htmlspecialchars($class_id); ?></h2>
+        <h2 class="text-center mb-4">Attendance for Class: <?php echo htmlspecialchars($class_name); ?></h2>
 
-        <?php
-        // Show any error messages
-        if (!empty($attendance_err)) {
-            echo "<div class='alert alert-danger'>" . htmlspecialchars($attendance_err) . "</div>";
-        }
-
-        // Check if attendance data is available
-        if (empty($attendance_data)) {
-            echo "<div class='alert alert-warning'>No attendance records found.</div>";
-        } else {
-            // Loop through each date and display attendance in separate cards
-            foreach ($attendance_data as $date => $records) {
-                echo "<div class='card mb-3'>";
-                echo "<div class='card-header'><strong>Date: </strong>" . htmlspecialchars($date) . "</div>";
-                echo "<div class='card-body'>";
-
-                // Link to the form page for modifying attendance on that date
-                echo "<a href='modify_attendance.php?class_id=" . $class_id . "&date=" . urlencode($date) . "' class='btn btn-primary'>Modify Attendance</a>";
-                echo "</div>"; // card-body
-                echo "</div>"; // card
-            }
-        }
-        ?>
-
+        <?php if (empty($attendance_data)) : ?>
+            <div class="alert no-data">No attendance records found.</div>
+        <?php else : ?>
+            <div class="row card-container">
+                <?php foreach ($attendance_data as $date => $records) : ?>
+                    <div class="col-lg-4 col-md-6"> <!-- Adjusts to 3 cards per row on large screens, 2 on medium -->
+                        <div class="card">
+                            <div class="card-header">
+                                Date: <?php echo htmlspecialchars($date); ?>
+                            </div>
+                            <div class="card-body">
+                                <p>Number of Records: <?php echo count($records); ?></p>
+                                <a href="modify_attendance.php?class_id=<?php echo $class_id; ?>&date=<?php echo urlencode($date); ?>" class="btn btn-primary">
+                                    Mark Attendance
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

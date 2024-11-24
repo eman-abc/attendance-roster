@@ -16,9 +16,6 @@ body {
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
     margin: 0;
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
     padding: 20px;
 }
 
@@ -28,6 +25,7 @@ body {
     border-radius: 10px;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     max-width: 1200px;
+    margin: auto;
 }
 
 /* Page Title */
@@ -39,45 +37,35 @@ h2 {
     text-transform: uppercase;
 }
 
-/* Bootstrap Card Styling */
+/* Card Styling */
 .card {
     background-color: var(--primary-mauve);
     border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+.card-header {
+    background-color: var(--accent-pink);
+    color: var(--primary-dark);
+    font-weight: bold;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
 }
 
 .card-body {
-    color: var(--text-light);
     padding: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
-.card-title {
-    color: var(--accent-pink) !important;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.card-text {
-    color: var(--text-light);
-    margin-bottom: 10px;
-}
-
-/* Button Styling */
+/* Buttons */
 .btn-primary {
     background-color: var(--accent-pink);
     border: none;
     color: var(--primary-dark);
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -86,7 +74,7 @@ h2 {
     transform: scale(1.05);
 }
 
-/* No Data Alert Styling */
+/* Alerts */
 .alert {
     border-radius: 5px;
     font-weight: bold;

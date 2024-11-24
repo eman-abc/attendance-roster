@@ -106,10 +106,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="master.css?v=1.0">
+
 </head>
 
-<body>
+<body style="max-height: 100vh;">
     <div class="container">
         <div class="login-container">
             <div class="login-header">

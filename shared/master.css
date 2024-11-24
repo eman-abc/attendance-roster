@@ -1,16 +1,43 @@
+:root {
+    /* Primary Colors */
+    --primary-dark: #33334d; /* Deep navy/purple for backgrounds or text */
+    --primary-mauve: #6d5c6a; /* Mauve for cards, containers, or subtle accents */
+    
+    /* Accent Color */
+    --accent-pink: #ceb0b0; /* Soft pink for buttons, highlights, or hover effects */
+}
+
+html, body {
+    height: 100%; /* Ensure the body takes up the full viewport height */
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove any default padding */
+    overflow: hidden; /* Prevent scrolling */
+}
+
 body {
-    background-color: #f8f9fa;
-    /* Light gray background */
+    background: linear-gradient(130deg, var(--primary-dark), var(--primary-mauve), var(--accent-pink)) !important;
+    /* Smooth diagonal gradient */
+    display: flex !important;
+    justify-content: center !important; /* Center the content horizontally */
+    align-items: center !important; /* Center the content vertically */
+    max-height: 100vh !important; /* Prevent vertical scrolling */
+    overflow: hidden !important; /* Prevent scrolling */
+    position: relative !important; /* Ensure no overflow beyond body */
 }
 
 .login-container {
     max-width: 400px;
-    margin: 50px auto;
+    width: 100%; /* Ensure it's responsive */
     padding: 30px;
-    background: #fff;
+    background: var(--accent-pink) !important;
     /* White card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    color: var(--primary-dark) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Prevent overflow inside the container */
 }
 
 .login-header {
@@ -21,6 +48,8 @@ body {
 .btn-primary {
     width: 100%;
     /* Full-width login button */
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
 }
 
 .form-text {

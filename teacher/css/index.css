@@ -1,40 +1,124 @@
+:root {
+    /* Color Palette */
+    --primary-dark: #33334d;
+    --primary-mauve: #6d5c6a;
+    --accent-pink: #ceb0b0;
+
+    /* Text Colors */
+    --text-light: #f0f0f0;
+    --text-dark: #1a1a1a;
+}
+
+
+
+
 body {
-    background-color: #f8f9fa;
-    /* Light gray background for better contrast */
+    background-color: #F0F1FA !important;
+    color: var(--text-light) !important;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    padding: 20px;
+
 }
 
 .container {
-    margin-top: 50px;
+    /* background-color: rgba(255, 255, 255, 0.1) !important; */
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important; */
 }
 
-.card {
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    /* Slight zoom effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Add shadow on hover */
-}
-
-.card-title {
-    font-size: 1.25rem;
+/* Section Title */
+h2 {
+    color: var(--text-dark) !important;
+    text-align: center;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
-.btn-primary {
-    background-color: #007bff;
+/* Bootstrap Card Styling */
+.card {
+    background-color: var(--primary-mauve) !important;
     border: none;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Lighter shadow for a cleaner look */
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    /* Ensures uniform height across cards */
+    display: flex;
+    flex-direction: column;
+    /* Makes button stick at the bottom */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    /* Subtle lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Slightly stronger shadow */
+}
+
+.card-header {
+    background-color: var(--primary-dark) !important;
+    color: var(--accent-pink) !important;
+    font-size: 1.25rem;
+    /* Slightly larger header text */
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-body {
+    color: var(--text-light) !important;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body p {
+    margin: 10px 0;
+    color: var(--text-light) !important;
+    font-size: 0.95rem;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--accent-pink) !important;
+    border: none;
+    color: var(--primary-dark) !important;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    margin-top: auto;
+    /* Ensures the button is pushed to the bottom */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    /* Darker shade on hover */
+    background-color: var(--text-light) !important;
+    color: var(--primary-dark) !important;
+    transform: scale(1.08);
+    /* Slight zoom effect */
 }
 
+/* No Data Alert Styling */
 .no-data {
+    background-color: var(--accent-pink) !important;
+    color: var(--primary-dark) !important;
     text-align: center;
-    margin-top: 50px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Adjust Row Gap for Cards */
+.card-container {
+    gap: 1.5rem;
+    /* Adds space between cards */
 }
