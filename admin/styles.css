@@ -1,0 +1,97 @@
+/* General Variables */
+:root {
+    --primary-dark: #33334d; /* Deep navy/purple for text */
+    --primary-mauve: #6d5c6a; /* Mauve for background containers */
+    --accent-pink: #ceb0b0; /* Soft pink for highlights or hover effects */
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(130deg, var(--primary-dark), var(--primary-mauve), var(--accent-pink));
+    color: var(--primary-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Container and Card */
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.login-container {
+    background: var(--accent-pink);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2, h4 {
+    color: var(--primary-dark);
+}
+
+/* Table Styling */
+.table {
+    background: #fff;
+    color: var(--primary-dark);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-mauve);
+    border-color: var(--primary-mauve);
+}
+
+.btn-danger {
+    background-color: #a94442;
+}
+
+.btn-danger:hover {
+    background-color: #882f2c;
+}
+
+.logout-btn {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #fff;
+}
+
+.logout-btn:hover {
+    background-color: var(--primary-mauve);
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+}
