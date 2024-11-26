@@ -52,10 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Fetch the data for the user
                     if ($stmt->fetch()) {
                         // Debug: Show fetched user data
-                        echo "User ID: " . $id . "<br>";
-                        echo "User Email: " . $email_from_db . "<br>";
-                        echo "User Password: " . $password_from_db . "<br>";
-                        echo "Role: " . $role . "<br>";
+                        // 
+                        
 
                         // Compare the entered password with the stored password
                         if ($password === $password_from_db) {
@@ -143,7 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </form>
 
-            <p class="form-text mt-3">Don't have an account? <a href="register.php">Register here</a>.</p>
         </div>
     </div>
 

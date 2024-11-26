@@ -10,27 +10,27 @@
     /* Soft pink for buttons, highlights, or hover effects */
 }
 
-html,
+/* html,
 body {
-    height: 100%;
+    /* height: 100%; */
     /* Ensure the body takes up the full viewport height */
-    margin: 0;
+    /* margin: 0; */
     /* Remove any default margins */
-    padding: 0;
+    /* padding: 0; */
     /* Remove any default padding */
-    overflow: hidden;
+    /* overflow: hidden; */
     /* Prevent scrolling */
-}
+/* }  */
 
 body {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-mauve), var(--accent-pink)) !important;
     /* Smooth diagonal gradient */
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
     /* Center the content horizontally */
-    align-items: center;
+    align-items: center !important;
     /* Center the content vertically */
-    max-height: 100vh;
+    max-height: 100vh !important;
     /* Prevent vertical scrolling */
 }
 
@@ -47,6 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 .login-header {

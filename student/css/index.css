@@ -11,7 +11,8 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-mauve), var(--accent-pink));
+    /* background: linear-gradient(135deg, var(--primary-dark), var(--primary-mauve), var(--accent-pink)); */
+    background-color: #F0F1FA !important;
     font-family: Arial, sans-serif;
     color: var(--text-light); /* Default text color for readability */
 }

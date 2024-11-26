@@ -4,7 +4,8 @@
     --accent-pink: #ceb0b0;
 }
 body {
-    background: linear-gradient(135deg, #4a3d69, #a58ca7);
+    /* background: linear-gradient(135deg, #4a3d69, #a58ca7); */
+    background-color: #F0F1FA !important;
     color: white; /* To contrast text with the background */
     font-family: Arial, sans-serif; /* Adjust font for better appearance */
     margin: 0;
@@ -15,7 +16,7 @@ body {
 
 .card {
     margin: 15px 0;
-    border: 2px solid var(--primary-dark);
+    border: 2px solid var(--primary-dark) !important;
     border-radius: 10px;
     transition: transform 0.3s;
     background-color: var(--accent-pink);
