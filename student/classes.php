@@ -61,7 +61,7 @@ $conn->close();
                                 <p><strong>End Time:</strong> <?= $class['end_time'] ?></p>
                                 <p>
                                     <strong>Attendance:</strong>
-                                    <span class="<?= $class['attendance_percentage'] < 75 ? 'low' : ($class['attendance_percentage'] < 85 ? 'medium' : 'high') ?>">
+                                     <span class="attendance-<?= $class['attendance_percentage'] < 75 ? 'low' : ($class['attendance_percentage'] < 85 ? 'medium' : 'high') ?>">
                                         <?= $class['attendance_percentage'] ?>%
                                     </span>
                                 </p>
